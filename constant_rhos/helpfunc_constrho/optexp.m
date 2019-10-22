@@ -1,6 +1,0 @@
-function r = optexp(Tc, Ta, dt, Ri, Re, betas, alphag, n, mu, Ls, ps, pg)
-	r =  - Ta + Tc .* ( (dt.^3 - Ri.^3)./(Re.^3 - Ri.^3) - (dt.^3 - Ri.^3).*dt./((Re.^3 - Ri.^3).*(dt - Ri)) ...
-		+ 3/4 .* (dt.^4 - Ri.^4)./( ( Re.^3 - Ri.^3) .* (dt.^3 - Ri.^3) ) )  + TI(Tc, dt, Ri, betas, alphag, n, mu, Ls, ps, pg) .*...
-	       	( (dt.^3 - Ri.^3).*dt./((Re.^3 - Ri.^3).*(dt - Ri)) - 3/4 .* (dt.^4 - Ri.^4)./( ( Re.^3 - Ri.^3) .* (dt.^3 - Ri.^3) ) );
-end	
-
