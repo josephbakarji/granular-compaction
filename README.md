@@ -24,8 +24,7 @@ For a 1D dynamic compaction, a velocity boundary condition is imposed on the lef
 - The folder `solver` contains the main functions of the code.
 - The function `solver1D.m` contains the main solver.
 
-[//]: <> (
-
+[active](
 
 - Fix:
 	- Main Variables:
