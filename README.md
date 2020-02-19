@@ -24,14 +24,13 @@ For a 1D dynamic compaction, a velocity boundary condition is imposed on the lef
 - The folder `solver` contains the main functions of the code.
 - The function `solver1D.m` contains the main solver.
 
+[//]: <> (
 
-# Research Tasks #
-## ACTIVE ##
 
-To fix:
-	* Main Variables:
+- Fix:
+	- Main Variables:
 		- alphas increases to 0.9 from 0.8; it starts at the first update of a1n
-	* Temperature:
+	- Temperature:
 		- Cold temperature decreasing - not as set in T1\_0 in main simulation.
 		- temperature blows up towards the end of the simulation.
 		- To ensure the positive part of the temperature, use abs( dB/dalpha ) instead of a signed value. Hack makes sense because plastic deformations work both ways.
@@ -50,9 +49,6 @@ To fix:
 	- Find Euler solver or write solver yourself. 
 
 
-## Programming Tasks ##
-* Publish on github
-
 * Fundamental issues:
 	- Fix overheating at boundary (bump due to different shock speeds?).
 	- dt0 does not converge for large dx/dt
@@ -61,7 +57,6 @@ To fix:
 * Extend:
 	- set n = 5 (optimization)
 	- The temperature profile along pore is linear (extend to 5th order)
-	- Implement Favrie 'configurational stress' terms (?)
 
 * Speed and Accuracy:
 	- No need to open/close file if RAM is large (on cluster)
@@ -74,19 +69,4 @@ To fix:
 	- FIX savemode read and write, fa2a.m and fa2a2.m
 	- Save and read reduced file (xx, alpha, p, T) skipping time steps
 
----------
-## Notes ##
-
-- spt30:	
-	- swtiched to temp\_ps2.m for temperature calculation
-	- solid energy is now increasing near boundary.
-	- make\_uo.m changed to compute partial pressures based on room temperature.
-	- Take note: the stiffened gas EOS along with the es = Ts * Cvs heat capacity equation have the unknown (Ts, es, Cvs, ps, rhos, gams, pinfs). At the beginning we known gams, pinfs, rhos, Cvs(?). The question is whether we know ps or Ts at the beginning and which one we should set first. It makes sense to start with a room temperature Ts=300, then find the corresponding es and then ps; otherwise, if ps is taken as room pressure, the temperature will be very high for Cvs=1444 as given by Saurel (2018 apdx).
-	- Parameters to be tweaked:
-		- pinf1, cv1, p0, a (dBconf)
-		- 6e8, 1444, 2e9, 5000 (works)
-
-- oct3:
-	- (old) Issue: Mismatch in multiscale model. Mesoscale heat model uses pressure disequilibrium while macroscale model is an equilibrium model.
-		- solution: dr/dt was used instead of (ps - pg) to calculate the temperature
-	
+)
